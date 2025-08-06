@@ -23,16 +23,17 @@ int main() {
 
     char line[1024];
     while(fgets(line, 1024, fin)){
-        char *token = strtok(line, " ;:-_()'\n");
+        char *token = strtok(line, " \n,;:_()");
         while(token != NULL){
             if(!is_all_upper(token)){
                 fprintf(fout, "%s ", token);
             }
-            token = strtok(NULL, " ;:-_()'\n");
+            token = strtok(NULL, " \n,;:_()");
         }
         fprintf(fout, "%s", "\n");
     }
     fclose(fin);
     fclose(fout);
+        
 
 }
