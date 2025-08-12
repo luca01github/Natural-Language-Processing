@@ -1,3 +1,4 @@
+//Last cleaning step
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -12,12 +13,14 @@ int main(){
     }
 
     char line[BUFFER_SIZE];
+    
     while(fgets(line, BUFFER_SIZE, fin)){
         char *token = strtok(line, " =\n\t,;:_()");
         while(token != NULL){
+            //write only words different from "Scene" and numbers
             if(strcmp(token, "Scene") != 0 && !isdigit((unsigned char)*token)){
                 for(int i=0; token[i]; i++){
-                    token[i] = tolower((unsigned char)token[i]);
+                    token[i] = tolower((unsigned char)token[i]);  //every character to lowercase
                 }
                 fprintf(fout, "%s ", token);
             }
